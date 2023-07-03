@@ -4,6 +4,7 @@ BMPcrypt is a cryptographic algorithm based on AES-128 in PCBC mode. It uses the
 
 
 To compile the executables (with g++ and the SDL2 library) just do 'sudo make BMPcrypt'.
+Output files will have an extra block of junk data that I was too lazy to remove, sorry.
 
 
 This project is old, and was used as an educational experience, as well as just something I thought would be interesting to do. 
