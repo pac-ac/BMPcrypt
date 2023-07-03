@@ -6,6 +6,12 @@
 This file includes functions to take in user input
 for both programs.
 
+
+When organizing this repo I ended up just using
+a lot of command line arguments instead so there are 
+now quite a few functions here that are just useless.
+
+
 */
 
 unsigned int dimensionIn(std::string outMessage) {
