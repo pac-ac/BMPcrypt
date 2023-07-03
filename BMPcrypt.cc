@@ -619,7 +619,6 @@ int main(int argc, char* argv[]) {
 			return 1;
         	}
 
-		//delete[] cipherFile;
         	outPlain.close();
 
         	const int cipherFileSize = (cipherText.size() / HEX_VAL_E) + 1;
