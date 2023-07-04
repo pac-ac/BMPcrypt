@@ -425,8 +425,8 @@ int main(int argc, char* argv[]) {
 	
 		std::cerr << "Must execute with proper args.\n\n";
 	
-		std::cerr << "Encrypt example: './BMPcrypt 1 image.bmp plain.txt output.txt'\n";
-		std::cerr << "Decrypt example: './BMPcrypt 0 image.bmp cipher.txt output.txt'\n";
+		std::cerr << "Encrypt example: './BMPcrypt 1 image.bmp plain.txt cipher.txt'\n";
+		std::cerr << "Decrypt example: './BMPcrypt 0 image.bmp cipher.txt plain.txt'\n";
 	}
 
 	std::vector<unsigned char> redV;
