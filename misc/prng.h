@@ -53,7 +53,7 @@ uint64_t randGen(uint64_t seedIter, uint16_t count) {
 		seedIter = (seedIter >> 8) ^ bytes_64[seedIter & 0xff];
 	}
 
-	return seedIter;
+	return seedIter + count;
 }
 
 //initialize cipherkey and IV
