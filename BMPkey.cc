@@ -8,14 +8,14 @@ int main(int argc, const char* argv[]) {
 	if (argc < 4) {
 	
 		std::cerr << "Must execute with output file name and dimensions.\n";
-		std::cerr << "e.g. './BMPkey image.bmp 453 608'\n";
+		std::cerr << "e.g. './BMPkey image.bmp 315 267'\n";
 		return 0;
 	}	
 
         constexpr int WIN_MULTIPLY = 1;
         constexpr int RGB_VAL = 256;
 
-        int size_w, size_l;
+        //int size_w, size_l;
 
         uint16_t extraIter;
 
@@ -73,7 +73,7 @@ int main(int argc, const char* argv[]) {
         int point1 = 0;
         int point2 = 0;
 
-        //pixel by pixel generation
+	
         for (int w = 0; w < WIDTH; w++) {
 
                 //SDL_RenderClear(renderer);
@@ -84,10 +84,9 @@ int main(int argc, const char* argv[]) {
 
                         point2 = l;
 
-                        RNG_red =   randGen(RNG_green, RGB_VAL - (RNG_green % RGB_VAL));
-                        RNG_green = randGen(RNG_blue, RGB_VAL - (RNG_blue % RGB_VAL));
-                        RNG_blue =  randGen(RNG_red, RGB_VAL - (RNG_red % RGB_VAL));
-
+                        RNG_red =   randGen(RNG_green, countNumB ^ l);
+                        RNG_green = randGen(RNG_blue, countNumR | l);
+                        RNG_blue =  randGen(RNG_red, countNumG + l);
 
                         //generate RGB values
                         SDL_SetRenderDrawColor(renderer,
@@ -106,12 +105,12 @@ int main(int argc, const char* argv[]) {
 
         for (int i = 0; i < extraIter; i++) {
 
-                RNG_mod1 =  randGen(RNG_mod2, 100);
-                RNG_mod2 =  randGen(RNG_mod1, 100);
+                RNG_mod1 =  randGen(RNG_mod2, countNum + i);
+                RNG_mod2 =  randGen(RNG_mod1, countNum - i);
 
-                RNG_red =   randGen(RNG_green, RGB_VAL - (RNG_green % RGB_VAL));
-                RNG_green = randGen(RNG_blue, RGB_VAL - (RNG_blue % RGB_VAL));
-                RNG_blue =  randGen(RNG_red, RGB_VAL - (RNG_red % RGB_VAL));
+		RNG_red =   randGen(RNG_green, countNumB ^ i);
+		RNG_green = randGen(RNG_blue, countNumR | i);
+		RNG_blue =  randGen(RNG_red, countNumG + i);
 
                 point1 = randGen(RNG_mod1, (RNG_mod2 % RGB_VAL) + 1) % WIDTH;
                 point2 = randGen(RNG_mod2, (RNG_mod1 % RGB_VAL) + 1) % LENGTH;
